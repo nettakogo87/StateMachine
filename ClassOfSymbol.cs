@@ -15,9 +15,16 @@ namespace StateMachine
         private char _startSymbol;
         private char _endSymbol;
 
-        public string Name { get;set; }
+        public string Name { get; set; }
         public char StartSymbol { get; set; }
         public char EndSymbol { get; set; }
+
+        public ClassOfSymbol(string name, char startSymbol, char endSymbol)
+        {
+            this._name = name;
+            this._startSymbol = startSymbol;
+            this._endSymbol = endSymbol;
+        }
 
         public bool ContainsSymbol(string symbol)
         {
