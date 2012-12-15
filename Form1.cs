@@ -98,15 +98,15 @@ namespace StateMachine
 
         private void buttonToCreateClassOfSymbol_Click(object sender, EventArgs e)
         {
-            this.panelLexem.Visible = false;
-            this.panelClassOfSymbol.Visible = true;
+            panelLexem.Visible = false;
+            panelClassOfSymbol.Visible = true;
         }
 
         private void buttonCreateLexem_Click(object sender, EventArgs e)
         {
-            string nameLexeme = this.textBoxEnterLexemName.Text;
-            int finalState = Convert.ToInt16(this.textBoxFinalState.Text);
-            int countCharToReturn = Convert.ToInt16(this.textBoxCountCharToReturn.Text);
+            string nameLexeme = textBoxEnterLexemName.Text;
+            int finalState = Convert.ToInt16(textBoxFinalState.Text);
+            int countCharToReturn = Convert.ToInt16(textBoxCountCharToReturn.Text);
             Lexeme newLexeme = new Lexeme(nameLexeme, countCharToReturn, finalState);
             this._listLexeme.Add(newLexeme);
         }
