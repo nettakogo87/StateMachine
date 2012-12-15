@@ -11,14 +11,13 @@ namespace StateMachine
 {
     public class ClassOfSymbol
     {
-        private string _name;
         private string _interval;
 
         public string Name { get; set; }
-        public string Interval { get; set; }
+
         public ClassOfSymbol(string name, string interval)
         {
-            this._name = name;
+            this.Name = name;
             this._interval = interval;
         }
 
