@@ -38,25 +38,23 @@
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelClassOfSymbol = new System.Windows.Forms.Panel();
             this.buttonCreateClassOfSymbol = new System.Windows.Forms.Button();
-            this.textBoxEnterLastSymbol = new System.Windows.Forms.TextBox();
-            this.labelEnterLastSymbol = new System.Windows.Forms.Label();
             this.labelTitleClassOfSymbol = new System.Windows.Forms.Label();
-            this.textBoxEnterFirstSymbol = new System.Windows.Forms.TextBox();
-            this.labelEnterFirstSymbol = new System.Windows.Forms.Label();
+            this.textBoxEnterInterval = new System.Windows.Forms.TextBox();
+            this.labelEnterInterval = new System.Windows.Forms.Label();
             this.labelEnterNameOfClassOfSymbol = new System.Windows.Forms.Label();
             this.textBoxEnterNameOfClassSymbol = new System.Windows.Forms.TextBox();
             this.panelLexem = new System.Windows.Forms.Panel();
             this.groupBoxCreateLexem = new System.Windows.Forms.GroupBox();
+            this.textBoxCountCharToReturn = new System.Windows.Forms.TextBox();
+            this.textBoxFinalState = new System.Windows.Forms.TextBox();
+            this.labelCountCharToReturn = new System.Windows.Forms.Label();
+            this.labelFinalState = new System.Windows.Forms.Label();
             this.buttonToCreateClassOfSymbol = new System.Windows.Forms.Button();
             this.buttonToTableOfState = new System.Windows.Forms.Button();
             this.buttonCreateLexem = new System.Windows.Forms.Button();
             this.textBoxEnterLexemName = new System.Windows.Forms.TextBox();
             this.labelEnterLexemName = new System.Windows.Forms.Label();
             this.labelCreateLexem = new System.Windows.Forms.Label();
-            this.labelFinalState = new System.Windows.Forms.Label();
-            this.labelCountCharToReturn = new System.Windows.Forms.Label();
-            this.textBoxFinalState = new System.Windows.Forms.TextBox();
-            this.textBoxCountCharToReturn = new System.Windows.Forms.TextBox();
             this.groupBoxCreateClassOfSymbol.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panelClassOfSymbol.SuspendLayout();
@@ -107,36 +105,34 @@
             // CreateToolStripMenuItem
             // 
             this.CreateToolStripMenuItem.Name = "CreateToolStripMenuItem";
-            this.CreateToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.CreateToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.CreateToolStripMenuItem.Text = "Создать";
             // 
             // SaveToolStripMenuItem
             // 
             this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
-            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.SaveToolStripMenuItem.Text = "Сохранить";
             // 
             // LoadToolStripMenuItem
             // 
             this.LoadToolStripMenuItem.Name = "LoadToolStripMenuItem";
-            this.LoadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.LoadToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.LoadToolStripMenuItem.Text = "Загрузить";
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.ExitToolStripMenuItem.Text = "Выход";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // panelClassOfSymbol
             // 
             this.panelClassOfSymbol.Controls.Add(this.buttonCreateClassOfSymbol);
-            this.panelClassOfSymbol.Controls.Add(this.textBoxEnterLastSymbol);
-            this.panelClassOfSymbol.Controls.Add(this.labelEnterLastSymbol);
             this.panelClassOfSymbol.Controls.Add(this.labelTitleClassOfSymbol);
-            this.panelClassOfSymbol.Controls.Add(this.textBoxEnterFirstSymbol);
-            this.panelClassOfSymbol.Controls.Add(this.labelEnterFirstSymbol);
+            this.panelClassOfSymbol.Controls.Add(this.textBoxEnterInterval);
+            this.panelClassOfSymbol.Controls.Add(this.labelEnterInterval);
             this.panelClassOfSymbol.Controls.Add(this.labelEnterNameOfClassOfSymbol);
             this.panelClassOfSymbol.Controls.Add(this.textBoxEnterNameOfClassSymbol);
             this.panelClassOfSymbol.Controls.Add(this.groupBoxCreateClassOfSymbol);
@@ -155,22 +151,6 @@
             this.buttonCreateClassOfSymbol.UseVisualStyleBackColor = true;
             this.buttonCreateClassOfSymbol.Click += new System.EventHandler(this.buttonCreateClassOfSymbol_Click);
             // 
-            // textBoxEnterLastSymbol
-            // 
-            this.textBoxEnterLastSymbol.Location = new System.Drawing.Point(64, 201);
-            this.textBoxEnterLastSymbol.Name = "textBoxEnterLastSymbol";
-            this.textBoxEnterLastSymbol.Size = new System.Drawing.Size(194, 20);
-            this.textBoxEnterLastSymbol.TabIndex = 6;
-            // 
-            // labelEnterLastSymbol
-            // 
-            this.labelEnterLastSymbol.AutoSize = true;
-            this.labelEnterLastSymbol.Location = new System.Drawing.Point(61, 185);
-            this.labelEnterLastSymbol.Name = "labelEnterLastSymbol";
-            this.labelEnterLastSymbol.Size = new System.Drawing.Size(145, 13);
-            this.labelEnterLastSymbol.TabIndex = 5;
-            this.labelEnterLastSymbol.Text = "Введите конечный символ:";
-            // 
             // labelTitleClassOfSymbol
             // 
             this.labelTitleClassOfSymbol.AutoSize = true;
@@ -181,21 +161,21 @@
             this.labelTitleClassOfSymbol.TabIndex = 4;
             this.labelTitleClassOfSymbol.Text = "Шаг 1. Добавте классы символов";
             // 
-            // textBoxEnterFirstSymbol
+            // textBoxEnterInterval
             // 
-            this.textBoxEnterFirstSymbol.Location = new System.Drawing.Point(64, 133);
-            this.textBoxEnterFirstSymbol.Name = "textBoxEnterFirstSymbol";
-            this.textBoxEnterFirstSymbol.Size = new System.Drawing.Size(194, 20);
-            this.textBoxEnterFirstSymbol.TabIndex = 3;
+            this.textBoxEnterInterval.Location = new System.Drawing.Point(64, 133);
+            this.textBoxEnterInterval.Name = "textBoxEnterInterval";
+            this.textBoxEnterInterval.Size = new System.Drawing.Size(194, 20);
+            this.textBoxEnterInterval.TabIndex = 3;
             // 
-            // labelEnterFirstSymbol
+            // labelEnterInterval
             // 
-            this.labelEnterFirstSymbol.AutoSize = true;
-            this.labelEnterFirstSymbol.Location = new System.Drawing.Point(61, 117);
-            this.labelEnterFirstSymbol.Name = "labelEnterFirstSymbol";
-            this.labelEnterFirstSymbol.Size = new System.Drawing.Size(151, 13);
-            this.labelEnterFirstSymbol.TabIndex = 2;
-            this.labelEnterFirstSymbol.Text = "Введите начальный символ:";
+            this.labelEnterInterval.AutoSize = true;
+            this.labelEnterInterval.Location = new System.Drawing.Point(61, 117);
+            this.labelEnterInterval.Name = "labelEnterInterval";
+            this.labelEnterInterval.Size = new System.Drawing.Size(102, 13);
+            this.labelEnterInterval.TabIndex = 2;
+            this.labelEnterInterval.Text = "Введите интервал:";
             // 
             // labelEnterNameOfClassOfSymbol
             // 
@@ -240,6 +220,38 @@
             this.groupBoxCreateLexem.Size = new System.Drawing.Size(301, 337);
             this.groupBoxCreateLexem.TabIndex = 1;
             this.groupBoxCreateLexem.TabStop = false;
+            // 
+            // textBoxCountCharToReturn
+            // 
+            this.textBoxCountCharToReturn.Location = new System.Drawing.Point(44, 167);
+            this.textBoxCountCharToReturn.Name = "textBoxCountCharToReturn";
+            this.textBoxCountCharToReturn.Size = new System.Drawing.Size(222, 20);
+            this.textBoxCountCharToReturn.TabIndex = 8;
+            // 
+            // textBoxFinalState
+            // 
+            this.textBoxFinalState.Location = new System.Drawing.Point(44, 99);
+            this.textBoxFinalState.Name = "textBoxFinalState";
+            this.textBoxFinalState.Size = new System.Drawing.Size(222, 20);
+            this.textBoxFinalState.TabIndex = 7;
+            // 
+            // labelCountCharToReturn
+            // 
+            this.labelCountCharToReturn.AutoSize = true;
+            this.labelCountCharToReturn.Location = new System.Drawing.Point(41, 151);
+            this.labelCountCharToReturn.Name = "labelCountCharToReturn";
+            this.labelCountCharToReturn.Size = new System.Drawing.Size(247, 13);
+            this.labelCountCharToReturn.TabIndex = 6;
+            this.labelCountCharToReturn.Text = "Введите количество возвращаемых символов:";
+            // 
+            // labelFinalState
+            // 
+            this.labelFinalState.AutoSize = true;
+            this.labelFinalState.Location = new System.Drawing.Point(41, 83);
+            this.labelFinalState.Name = "labelFinalState";
+            this.labelFinalState.Size = new System.Drawing.Size(198, 13);
+            this.labelFinalState.TabIndex = 5;
+            this.labelFinalState.Text = "Введите номер конечного состояния:";
             // 
             // buttonToCreateClassOfSymbol
             // 
@@ -297,38 +309,6 @@
             this.labelCreateLexem.TabIndex = 0;
             this.labelCreateLexem.Text = "Шаг 2. Добавте лексеммы";
             // 
-            // labelFinalState
-            // 
-            this.labelFinalState.AutoSize = true;
-            this.labelFinalState.Location = new System.Drawing.Point(41, 83);
-            this.labelFinalState.Name = "labelFinalState";
-            this.labelFinalState.Size = new System.Drawing.Size(198, 13);
-            this.labelFinalState.TabIndex = 5;
-            this.labelFinalState.Text = "Введите номер конечного состояния:";
-            // 
-            // labelCountCharToReturn
-            // 
-            this.labelCountCharToReturn.AutoSize = true;
-            this.labelCountCharToReturn.Location = new System.Drawing.Point(41, 151);
-            this.labelCountCharToReturn.Name = "labelCountCharToReturn";
-            this.labelCountCharToReturn.Size = new System.Drawing.Size(247, 13);
-            this.labelCountCharToReturn.TabIndex = 6;
-            this.labelCountCharToReturn.Text = "Введите количество возвращаемых символов:";
-            // 
-            // textBoxFinalState
-            // 
-            this.textBoxFinalState.Location = new System.Drawing.Point(44, 99);
-            this.textBoxFinalState.Name = "textBoxFinalState";
-            this.textBoxFinalState.Size = new System.Drawing.Size(222, 20);
-            this.textBoxFinalState.TabIndex = 7;
-            // 
-            // textBoxCountCharToReturn
-            // 
-            this.textBoxCountCharToReturn.Location = new System.Drawing.Point(44, 167);
-            this.textBoxCountCharToReturn.Name = "textBoxCountCharToReturn";
-            this.textBoxCountCharToReturn.Size = new System.Drawing.Size(222, 20);
-            this.textBoxCountCharToReturn.TabIndex = 8;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -365,12 +345,10 @@
         private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
         private System.Windows.Forms.Panel panelClassOfSymbol;
         private System.Windows.Forms.Label labelTitleClassOfSymbol;
-        private System.Windows.Forms.TextBox textBoxEnterFirstSymbol;
-        private System.Windows.Forms.Label labelEnterFirstSymbol;
+        private System.Windows.Forms.TextBox textBoxEnterInterval;
+        private System.Windows.Forms.Label labelEnterInterval;
         private System.Windows.Forms.Label labelEnterNameOfClassOfSymbol;
         private System.Windows.Forms.TextBox textBoxEnterNameOfClassSymbol;
-        private System.Windows.Forms.Label labelEnterLastSymbol;
-        private System.Windows.Forms.TextBox textBoxEnterLastSymbol;
         private System.Windows.Forms.Button buttonToLexem;
         private System.Windows.Forms.Button buttonCreateClassOfSymbol;
         private System.Windows.Forms.Panel panelLexem;

@@ -23,26 +23,77 @@ namespace StateMachine
 
         private void buttonToLexem_Click(object sender, EventArgs e)
         {
-            this.panelClassOfSymbol.Visible = false;
-            this.panelLexem.Visible = true;
+            panelClassOfSymbol.Visible = false;
+            panelLexem.Visible = true;
         }
 
         private void textBoxEnterNameOfClassSymbol_TextChanged(object sender, EventArgs e)
         {
-            this.textBoxEnterFirstSymbol.Text = this.textBoxEnterNameOfClassSymbol.Text;
-            this.textBoxEnterLastSymbol.Text = this.textBoxEnterNameOfClassSymbol.Text;
+            textBoxEnterInterval.Text = textBoxEnterNameOfClassSymbol.Text;
         }
 
         private void buttonCreateClassOfSymbol_Click(object sender, EventArgs e)
         {
-            string nameClassOfSymbol = this.textBoxEnterNameOfClassSymbol.Text;
-            char firstSymbol = this.textBoxEnterFirstSymbol.Text.ToCharArray()[0];
-            char lastSymbol = this.textBoxEnterLastSymbol.Text.ToCharArray()[0];
-            this.textBoxEnterNameOfClassSymbol.Clear();
-            this.textBoxEnterFirstSymbol.Clear();
-            this.textBoxEnterLastSymbol.Clear();
-            ClassOfSymbol newClassOfSymbol = new ClassOfSymbol(nameClassOfSymbol, firstSymbol, lastSymbol);
-            this._listClassOfSymbol.Add(newClassOfSymbol);
+            string nameClassOfSymbol = textBoxEnterNameOfClassSymbol.Text;
+            string interval = textBoxEnterInterval.Text;
+            textBoxEnterNameOfClassSymbol.Clear();
+            textBoxEnterInterval.Clear();
+            switch (interval)
+            {
+                case "\\":
+                    interval = "\\" + interval;
+                    break;
+                case "^":
+                    interval = "\\" + interval;
+                    break;
+                case "$":
+                    interval = "\\" + interval;
+                    break;
+                case ".":
+                    interval = "\\" + interval;
+                    break;
+                case "[":
+                    interval = "\\" + interval;
+                    break;
+                case "]":
+                    interval = "\\" + interval;
+                    break;
+                case "|":
+                    interval = "\\" + interval;
+                    break;
+                case "(":
+                    interval = "\\" + interval;
+                    break;
+                case ")":
+                    interval = "\\" + interval;
+                    break;
+                case "?":
+                    interval = "\\" + interval;
+                    break;
+                case "*":
+                    interval = "\\" + interval;
+                    break;
+                case "+":
+                    interval = "\\" + interval;
+                    break;
+                case "{":
+                    interval = "\\" + interval;
+                    break;
+                case "}":
+                    interval = "\\" + interval;
+                    break;
+                case "\"":
+                    interval = "\\" + interval;
+                    break;
+                case "'":
+                    interval = "\\" + interval;
+                    break;
+                case "%":
+                    interval = "\\" + interval;
+                    break;
+            }
+            ClassOfSymbol newClassOfSymbol = new ClassOfSymbol(nameClassOfSymbol, interval);
+            _listClassOfSymbol.Add(newClassOfSymbol);
         }
 
         private void buttonToCreateClassOfSymbol_Click(object sender, EventArgs e)
