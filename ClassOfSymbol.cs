@@ -12,25 +12,19 @@ namespace StateMachine
     public class ClassOfSymbol
     {
         private string _name;
-        private char _startSymbol;
-        private char _endSymbol;
+        private string _interval;
 
         public string Name { get; set; }
-        public char StartSymbol { get; set; }
-        public char EndSymbol { get; set; }
-
-        public ClassOfSymbol(string name, char startSymbol, char endSymbol)
+        public string Interval { get; set; }
+        public ClassOfSymbol(string name, string interval)
         {
             this._name = name;
-            this._startSymbol = startSymbol;
-            this._endSymbol = endSymbol;
+            this._interval = interval;
         }
 
         public bool ContainsSymbol(string symbol)
         {
-            string ss = _startSymbol.ToString();
-            string es = _endSymbol.ToString();
-            string pattern = ss == es ? @ss : @"[" + ss + "-" + es + "]";
+            string pattern = @"[" + this._interval + "]";
             RegexOptions option = RegexOptions.IgnoreCase;
             Regex newReg = new Regex(pattern, option);
             MatchCollection matches = newReg.Matches(symbol);
