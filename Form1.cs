@@ -12,13 +12,14 @@ namespace StateMachine
     public partial class Form1 : Form
     {
         private List<ClassOfSymbol> _listClassOfSymbol;
-        private List<Lexeme> _listLexeme;
+        private List<Lexeme> _listOfLexemes;
+        private TableOfStates _myMachine;
 
         public Form1()
         {
             InitializeComponent();
             _listClassOfSymbol = new List<ClassOfSymbol>();
-            _listLexeme = new List<Lexeme>();
+            _listOfLexemes = new List<Lexeme>();
         }
 
         private void buttonToLexem_Click(object sender, EventArgs e)
@@ -108,12 +109,47 @@ namespace StateMachine
             int finalState = Convert.ToInt16(textBoxFinalState.Text);
             int countCharToReturn = Convert.ToInt16(textBoxCountCharToReturn.Text);
             Lexeme newLexeme = new Lexeme(nameLexeme, countCharToReturn, finalState);
-            this._listLexeme.Add(newLexeme);
+            textBoxEnterLexemName.Clear();
+            textBoxFinalState.Clear();
+            textBoxCountCharToReturn.Clear();
+            this._listOfLexemes.Add(newLexeme);
         }
 
         private void buttonToTableOfState_Click(object sender, EventArgs e)
         {
+            for (int i = 0; i < this._listClassOfSymbol.Count; i++ )
+            {
+                dataGridViewTableOfState.Columns.Add(this._listClassOfSymbol[i].Name, this._listClassOfSymbol[i].Name);
+                dataGridViewTableOfState.Columns[i + 1].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+            dataGridViewTableOfState.Rows.Add();
+            dataGridViewTableOfState.Rows[0].HeaderCell.Value = "S0";
 
+            for (int i = 0; i < this._listOfLexemes.Count; i++)
+            {
+                dataGridViewLexemes.Rows.Add(this._listOfLexemes[i].Name, this._listOfLexemes[i].CountCharToReturn, this._listOfLexemes[i].FinalState);
+                dataGridViewLexemes.Rows[i].HeaderCell.Value = i.ToString();
+            }
+
+            panelClassOfSymbol.Visible = false;
+            panelLexem.Visible = false;
+            panelTableOfState.Visible = true;
+        }
+
+        private void buttonAddState_Click(object sender, EventArgs e)
+        {
+            dataGridViewTableOfState.Rows.Add();
+            int newRowIndex = dataGridViewTableOfState.Rows.Count - 1;
+            dataGridViewTableOfState.Rows[newRowIndex].HeaderCell.Value = "S" + newRowIndex.ToString();
+        }
+
+        private void buttonDeleteState_Click(object sender, EventArgs e)
+        {
+            int lastRowIndex = dataGridViewTableOfState.Rows.Count - 1;
+            if (0 < lastRowIndex)
+            {
+                dataGridViewTableOfState.Rows.Remove(dataGridViewTableOfState.Rows[lastRowIndex]);
+            }
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -121,7 +157,14 @@ namespace StateMachine
             Application.Exit();
         }
 
+        private void buttonStep_Click(object sender, EventArgs e)
+        {
 
+        }
 
+        private void buttonStart_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
