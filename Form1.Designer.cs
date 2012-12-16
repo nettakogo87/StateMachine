@@ -56,43 +56,45 @@
             this.labelEnterLexemName = new System.Windows.Forms.Label();
             this.labelCreateLexem = new System.Windows.Forms.Label();
             this.panelTableOfState = new System.Windows.Forms.Panel();
+            this.labelStepThree = new System.Windows.Forms.Label();
+            this.groupBoxControlPanel = new System.Windows.Forms.GroupBox();
+            this.buttonChangeMachineOfState = new System.Windows.Forms.Button();
+            this.buttonToStart = new System.Windows.Forms.Button();
+            this.buttonClearSteps = new System.Windows.Forms.Button();
+            this.buttonStep = new System.Windows.Forms.Button();
+            this.labelTextForLexicalAnalysis = new System.Windows.Forms.Label();
+            this.labelCurrentLexeme = new System.Windows.Forms.Label();
+            this.labelLastLexeme = new System.Windows.Forms.Label();
+            this.textBoxForLex = new System.Windows.Forms.TextBox();
+            this.textBoxCurrentLexeme = new System.Windows.Forms.TextBox();
+            this.textBoxLastLexeme = new System.Windows.Forms.TextBox();
             this.groupBoxLexemes = new System.Windows.Forms.GroupBox();
+            this.buttonDeletSelectedLexemeInState = new System.Windows.Forms.Button();
+            this.buttonAddLexemeInState = new System.Windows.Forms.Button();
             this.dataGridViewLexemes = new System.Windows.Forms.DataGridView();
             this.LexemeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CountCharToReturn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FinalState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxTableOfState = new System.Windows.Forms.GroupBox();
+            this.buttonStart = new System.Windows.Forms.Button();
+            this.buttonDeletSelectedClassOfSymbolInState = new System.Windows.Forms.Button();
+            this.buttonAddClassOfSymbolsInState = new System.Windows.Forms.Button();
             this.dataGridViewTableOfState = new System.Windows.Forms.DataGridView();
             this.Other = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonAddState = new System.Windows.Forms.Button();
             this.buttonDeleteState = new System.Windows.Forms.Button();
-            this.groupBoxControlPanel = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.labelLastLexeme = new System.Windows.Forms.Label();
-            this.labelCurrentLexeme = new System.Windows.Forms.Label();
-            this.labelTextForLexicalAnalysis = new System.Windows.Forms.Label();
-            this.buttonStep = new System.Windows.Forms.Button();
-            this.buttonClearSteps = new System.Windows.Forms.Button();
-            this.buttonToStart = new System.Windows.Forms.Button();
-            this.buttonAddClassOfSymbolsInState = new System.Windows.Forms.Button();
-            this.buttonDeletSelectedClassOfSymbolInState = new System.Windows.Forms.Button();
-            this.buttonAddLexemeInState = new System.Windows.Forms.Button();
-            this.buttonDeletSelectedLexemeInState = new System.Windows.Forms.Button();
-            this.buttonStart = new System.Windows.Forms.Button();
-            this.labelStepThree = new System.Windows.Forms.Label();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.groupBoxCreateClassOfSymbol.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panelClassOfSymbol.SuspendLayout();
             this.panelLexem.SuspendLayout();
             this.groupBoxCreateLexem.SuspendLayout();
             this.panelTableOfState.SuspendLayout();
+            this.groupBoxControlPanel.SuspendLayout();
             this.groupBoxLexemes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLexemes)).BeginInit();
             this.groupBoxTableOfState.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTableOfState)).BeginInit();
-            this.groupBoxControlPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxCreateClassOfSymbol
@@ -138,25 +140,26 @@
             // CreateToolStripMenuItem
             // 
             this.CreateToolStripMenuItem.Name = "CreateToolStripMenuItem";
-            this.CreateToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.CreateToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.CreateToolStripMenuItem.Text = "Создать";
             // 
             // SaveToolStripMenuItem
             // 
             this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
-            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.SaveToolStripMenuItem.Text = "Сохранить";
+            this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // LoadToolStripMenuItem
             // 
             this.LoadToolStripMenuItem.Name = "LoadToolStripMenuItem";
-            this.LoadToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.LoadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.LoadToolStripMenuItem.Text = "Загрузить";
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ExitToolStripMenuItem.Text = "Выход";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -354,6 +357,121 @@
             this.panelTableOfState.TabIndex = 4;
             this.panelTableOfState.Visible = false;
             // 
+            // labelStepThree
+            // 
+            this.labelStepThree.AutoSize = true;
+            this.labelStepThree.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelStepThree.Location = new System.Drawing.Point(10, 11);
+            this.labelStepThree.Name = "labelStepThree";
+            this.labelStepThree.Size = new System.Drawing.Size(794, 24);
+            this.labelStepThree.TabIndex = 5;
+            this.labelStepThree.Text = "Шаг 3. После заполнения \"Машины состояний\" нужно нажать \"Готово к употреблению\"";
+            // 
+            // groupBoxControlPanel
+            // 
+            this.groupBoxControlPanel.Controls.Add(this.buttonChangeMachineOfState);
+            this.groupBoxControlPanel.Controls.Add(this.buttonToStart);
+            this.groupBoxControlPanel.Controls.Add(this.buttonClearSteps);
+            this.groupBoxControlPanel.Controls.Add(this.buttonStep);
+            this.groupBoxControlPanel.Controls.Add(this.labelTextForLexicalAnalysis);
+            this.groupBoxControlPanel.Controls.Add(this.labelCurrentLexeme);
+            this.groupBoxControlPanel.Controls.Add(this.labelLastLexeme);
+            this.groupBoxControlPanel.Controls.Add(this.textBoxForLex);
+            this.groupBoxControlPanel.Controls.Add(this.textBoxCurrentLexeme);
+            this.groupBoxControlPanel.Controls.Add(this.textBoxLastLexeme);
+            this.groupBoxControlPanel.Enabled = false;
+            this.groupBoxControlPanel.Location = new System.Drawing.Point(3, 395);
+            this.groupBoxControlPanel.Name = "groupBoxControlPanel";
+            this.groupBoxControlPanel.Size = new System.Drawing.Size(984, 120);
+            this.groupBoxControlPanel.TabIndex = 3;
+            this.groupBoxControlPanel.TabStop = false;
+            this.groupBoxControlPanel.Text = "Панель управления и меню Пуск!";
+            // 
+            // buttonChangeMachineOfState
+            // 
+            this.buttonChangeMachineOfState.Location = new System.Drawing.Point(763, 68);
+            this.buttonChangeMachineOfState.Name = "buttonChangeMachineOfState";
+            this.buttonChangeMachineOfState.Size = new System.Drawing.Size(129, 40);
+            this.buttonChangeMachineOfState.TabIndex = 9;
+            this.buttonChangeMachineOfState.Text = "Редактировать машину состояний";
+            this.buttonChangeMachineOfState.UseVisualStyleBackColor = true;
+            // 
+            // buttonToStart
+            // 
+            this.buttonToStart.Location = new System.Drawing.Point(628, 19);
+            this.buttonToStart.Name = "buttonToStart";
+            this.buttonToStart.Size = new System.Drawing.Size(128, 40);
+            this.buttonToStart.TabIndex = 8;
+            this.buttonToStart.Text = "В исодное состояние";
+            this.buttonToStart.UseVisualStyleBackColor = true;
+            // 
+            // buttonClearSteps
+            // 
+            this.buttonClearSteps.Location = new System.Drawing.Point(763, 19);
+            this.buttonClearSteps.Name = "buttonClearSteps";
+            this.buttonClearSteps.Size = new System.Drawing.Size(129, 40);
+            this.buttonClearSteps.TabIndex = 7;
+            this.buttonClearSteps.Text = "Сброс";
+            this.buttonClearSteps.UseVisualStyleBackColor = true;
+            // 
+            // buttonStep
+            // 
+            this.buttonStep.Location = new System.Drawing.Point(628, 68);
+            this.buttonStep.Name = "buttonStep";
+            this.buttonStep.Size = new System.Drawing.Size(129, 40);
+            this.buttonStep.TabIndex = 6;
+            this.buttonStep.Text = "Шаг";
+            this.buttonStep.UseVisualStyleBackColor = true;
+            this.buttonStep.Click += new System.EventHandler(this.buttonStep_Click);
+            // 
+            // labelTextForLexicalAnalysis
+            // 
+            this.labelTextForLexicalAnalysis.AutoSize = true;
+            this.labelTextForLexicalAnalysis.Location = new System.Drawing.Point(7, 89);
+            this.labelTextForLexicalAnalysis.Name = "labelTextForLexicalAnalysis";
+            this.labelTextForLexicalAnalysis.Size = new System.Drawing.Size(179, 13);
+            this.labelTextForLexicalAnalysis.TabIndex = 5;
+            this.labelTextForLexicalAnalysis.Text = "Текст для лексического анализа:";
+            // 
+            // labelCurrentLexeme
+            // 
+            this.labelCurrentLexeme.AutoSize = true;
+            this.labelCurrentLexeme.Location = new System.Drawing.Point(7, 56);
+            this.labelCurrentLexeme.Name = "labelCurrentLexeme";
+            this.labelCurrentLexeme.Size = new System.Drawing.Size(102, 13);
+            this.labelCurrentLexeme.TabIndex = 4;
+            this.labelCurrentLexeme.Text = "Текущая лексема:";
+            // 
+            // labelLastLexeme
+            // 
+            this.labelLastLexeme.AutoSize = true;
+            this.labelLastLexeme.Location = new System.Drawing.Point(7, 24);
+            this.labelLastLexeme.Name = "labelLastLexeme";
+            this.labelLastLexeme.Size = new System.Drawing.Size(113, 13);
+            this.labelLastLexeme.TabIndex = 3;
+            this.labelLastLexeme.Text = "Последняя лексема:";
+            // 
+            // textBoxForLex
+            // 
+            this.textBoxForLex.Location = new System.Drawing.Point(192, 86);
+            this.textBoxForLex.Name = "textBoxForLex";
+            this.textBoxForLex.Size = new System.Drawing.Size(419, 20);
+            this.textBoxForLex.TabIndex = 2;
+            // 
+            // textBoxCurrentLexeme
+            // 
+            this.textBoxCurrentLexeme.Location = new System.Drawing.Point(192, 53);
+            this.textBoxCurrentLexeme.Name = "textBoxCurrentLexeme";
+            this.textBoxCurrentLexeme.Size = new System.Drawing.Size(419, 20);
+            this.textBoxCurrentLexeme.TabIndex = 1;
+            // 
+            // textBoxLastLexeme
+            // 
+            this.textBoxLastLexeme.Location = new System.Drawing.Point(192, 21);
+            this.textBoxLastLexeme.Name = "textBoxLastLexeme";
+            this.textBoxLastLexeme.Size = new System.Drawing.Size(419, 20);
+            this.textBoxLastLexeme.TabIndex = 0;
+            // 
             // groupBoxLexemes
             // 
             this.groupBoxLexemes.Controls.Add(this.buttonDeletSelectedLexemeInState);
@@ -365,6 +483,24 @@
             this.groupBoxLexemes.TabIndex = 4;
             this.groupBoxLexemes.TabStop = false;
             this.groupBoxLexemes.Text = "Лексемы";
+            // 
+            // buttonDeletSelectedLexemeInState
+            // 
+            this.buttonDeletSelectedLexemeInState.Location = new System.Drawing.Point(102, 297);
+            this.buttonDeletSelectedLexemeInState.Name = "buttonDeletSelectedLexemeInState";
+            this.buttonDeletSelectedLexemeInState.Size = new System.Drawing.Size(89, 44);
+            this.buttonDeletSelectedLexemeInState.TabIndex = 2;
+            this.buttonDeletSelectedLexemeInState.Text = "Удалить выбранную лексему";
+            this.buttonDeletSelectedLexemeInState.UseVisualStyleBackColor = true;
+            // 
+            // buttonAddLexemeInState
+            // 
+            this.buttonAddLexemeInState.Location = new System.Drawing.Point(7, 297);
+            this.buttonAddLexemeInState.Name = "buttonAddLexemeInState";
+            this.buttonAddLexemeInState.Size = new System.Drawing.Size(89, 44);
+            this.buttonAddLexemeInState.TabIndex = 1;
+            this.buttonAddLexemeInState.Text = "Добавить лексему";
+            this.buttonAddLexemeInState.UseVisualStyleBackColor = true;
             // 
             // dataGridViewLexemes
             // 
@@ -413,6 +549,34 @@
             this.groupBoxTableOfState.TabStop = false;
             this.groupBoxTableOfState.Text = "Машина состояний";
             // 
+            // buttonStart
+            // 
+            this.buttonStart.Location = new System.Drawing.Point(503, 297);
+            this.buttonStart.Name = "buttonStart";
+            this.buttonStart.Size = new System.Drawing.Size(108, 44);
+            this.buttonStart.TabIndex = 5;
+            this.buttonStart.Text = "Готово к употреблению";
+            this.buttonStart.UseVisualStyleBackColor = true;
+            this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
+            // 
+            // buttonDeletSelectedClassOfSymbolInState
+            // 
+            this.buttonDeletSelectedClassOfSymbolInState.Location = new System.Drawing.Point(369, 297);
+            this.buttonDeletSelectedClassOfSymbolInState.Name = "buttonDeletSelectedClassOfSymbolInState";
+            this.buttonDeletSelectedClassOfSymbolInState.Size = new System.Drawing.Size(127, 44);
+            this.buttonDeletSelectedClassOfSymbolInState.TabIndex = 4;
+            this.buttonDeletSelectedClassOfSymbolInState.Text = "Удалить выбранный класс символов";
+            this.buttonDeletSelectedClassOfSymbolInState.UseVisualStyleBackColor = true;
+            // 
+            // buttonAddClassOfSymbolsInState
+            // 
+            this.buttonAddClassOfSymbolsInState.Location = new System.Drawing.Point(245, 297);
+            this.buttonAddClassOfSymbolsInState.Name = "buttonAddClassOfSymbolsInState";
+            this.buttonAddClassOfSymbolsInState.Size = new System.Drawing.Size(118, 44);
+            this.buttonAddClassOfSymbolsInState.TabIndex = 3;
+            this.buttonAddClassOfSymbolsInState.Text = "Добавить класс символов";
+            this.buttonAddClassOfSymbolsInState.UseVisualStyleBackColor = true;
+            // 
             // dataGridViewTableOfState
             // 
             this.dataGridViewTableOfState.AllowUserToAddRows = false;
@@ -452,157 +616,6 @@
             this.buttonDeleteState.UseVisualStyleBackColor = true;
             this.buttonDeleteState.Click += new System.EventHandler(this.buttonDeleteState_Click);
             // 
-            // groupBoxControlPanel
-            // 
-            this.groupBoxControlPanel.Controls.Add(this.buttonToStart);
-            this.groupBoxControlPanel.Controls.Add(this.buttonClearSteps);
-            this.groupBoxControlPanel.Controls.Add(this.buttonStep);
-            this.groupBoxControlPanel.Controls.Add(this.labelTextForLexicalAnalysis);
-            this.groupBoxControlPanel.Controls.Add(this.labelCurrentLexeme);
-            this.groupBoxControlPanel.Controls.Add(this.labelLastLexeme);
-            this.groupBoxControlPanel.Controls.Add(this.textBox3);
-            this.groupBoxControlPanel.Controls.Add(this.textBox2);
-            this.groupBoxControlPanel.Controls.Add(this.textBox1);
-            this.groupBoxControlPanel.Enabled = false;
-            this.groupBoxControlPanel.Location = new System.Drawing.Point(3, 395);
-            this.groupBoxControlPanel.Name = "groupBoxControlPanel";
-            this.groupBoxControlPanel.Size = new System.Drawing.Size(984, 120);
-            this.groupBoxControlPanel.TabIndex = 3;
-            this.groupBoxControlPanel.TabStop = false;
-            this.groupBoxControlPanel.Text = "Панель управления и меню Пуск!";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(192, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(419, 20);
-            this.textBox1.TabIndex = 0;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(192, 53);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(419, 20);
-            this.textBox2.TabIndex = 1;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(192, 86);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(419, 20);
-            this.textBox3.TabIndex = 2;
-            // 
-            // labelLastLexeme
-            // 
-            this.labelLastLexeme.AutoSize = true;
-            this.labelLastLexeme.Location = new System.Drawing.Point(7, 24);
-            this.labelLastLexeme.Name = "labelLastLexeme";
-            this.labelLastLexeme.Size = new System.Drawing.Size(113, 13);
-            this.labelLastLexeme.TabIndex = 3;
-            this.labelLastLexeme.Text = "Последняя лексема:";
-            // 
-            // labelCurrentLexeme
-            // 
-            this.labelCurrentLexeme.AutoSize = true;
-            this.labelCurrentLexeme.Location = new System.Drawing.Point(7, 56);
-            this.labelCurrentLexeme.Name = "labelCurrentLexeme";
-            this.labelCurrentLexeme.Size = new System.Drawing.Size(102, 13);
-            this.labelCurrentLexeme.TabIndex = 4;
-            this.labelCurrentLexeme.Text = "Текущая лексема:";
-            // 
-            // labelTextForLexicalAnalysis
-            // 
-            this.labelTextForLexicalAnalysis.AutoSize = true;
-            this.labelTextForLexicalAnalysis.Location = new System.Drawing.Point(7, 89);
-            this.labelTextForLexicalAnalysis.Name = "labelTextForLexicalAnalysis";
-            this.labelTextForLexicalAnalysis.Size = new System.Drawing.Size(179, 13);
-            this.labelTextForLexicalAnalysis.TabIndex = 5;
-            this.labelTextForLexicalAnalysis.Text = "Текст для лексического анализа:";
-            // 
-            // buttonStep
-            // 
-            this.buttonStep.Location = new System.Drawing.Point(631, 85);
-            this.buttonStep.Name = "buttonStep";
-            this.buttonStep.Size = new System.Drawing.Size(129, 23);
-            this.buttonStep.TabIndex = 6;
-            this.buttonStep.Text = "Шаг";
-            this.buttonStep.UseVisualStyleBackColor = true;
-            this.buttonStep.Click += new System.EventHandler(this.buttonStep_Click);
-            // 
-            // buttonClearSteps
-            // 
-            this.buttonClearSteps.Location = new System.Drawing.Point(631, 19);
-            this.buttonClearSteps.Name = "buttonClearSteps";
-            this.buttonClearSteps.Size = new System.Drawing.Size(129, 23);
-            this.buttonClearSteps.TabIndex = 7;
-            this.buttonClearSteps.Text = "Сброс";
-            this.buttonClearSteps.UseVisualStyleBackColor = true;
-            // 
-            // buttonToStart
-            // 
-            this.buttonToStart.Location = new System.Drawing.Point(631, 52);
-            this.buttonToStart.Name = "buttonToStart";
-            this.buttonToStart.Size = new System.Drawing.Size(128, 23);
-            this.buttonToStart.TabIndex = 8;
-            this.buttonToStart.Text = "В исодное состояние";
-            this.buttonToStart.UseVisualStyleBackColor = true;
-            // 
-            // buttonAddClassOfSymbolsInState
-            // 
-            this.buttonAddClassOfSymbolsInState.Location = new System.Drawing.Point(245, 297);
-            this.buttonAddClassOfSymbolsInState.Name = "buttonAddClassOfSymbolsInState";
-            this.buttonAddClassOfSymbolsInState.Size = new System.Drawing.Size(118, 44);
-            this.buttonAddClassOfSymbolsInState.TabIndex = 3;
-            this.buttonAddClassOfSymbolsInState.Text = "Добавить класс символов";
-            this.buttonAddClassOfSymbolsInState.UseVisualStyleBackColor = true;
-            // 
-            // buttonDeletSelectedClassOfSymbolInState
-            // 
-            this.buttonDeletSelectedClassOfSymbolInState.Location = new System.Drawing.Point(369, 297);
-            this.buttonDeletSelectedClassOfSymbolInState.Name = "buttonDeletSelectedClassOfSymbolInState";
-            this.buttonDeletSelectedClassOfSymbolInState.Size = new System.Drawing.Size(127, 44);
-            this.buttonDeletSelectedClassOfSymbolInState.TabIndex = 4;
-            this.buttonDeletSelectedClassOfSymbolInState.Text = "Удалить выбранный класс символов";
-            this.buttonDeletSelectedClassOfSymbolInState.UseVisualStyleBackColor = true;
-            // 
-            // buttonAddLexemeInState
-            // 
-            this.buttonAddLexemeInState.Location = new System.Drawing.Point(7, 297);
-            this.buttonAddLexemeInState.Name = "buttonAddLexemeInState";
-            this.buttonAddLexemeInState.Size = new System.Drawing.Size(89, 44);
-            this.buttonAddLexemeInState.TabIndex = 1;
-            this.buttonAddLexemeInState.Text = "Добавить лексему";
-            this.buttonAddLexemeInState.UseVisualStyleBackColor = true;
-            // 
-            // buttonDeletSelectedLexemeInState
-            // 
-            this.buttonDeletSelectedLexemeInState.Location = new System.Drawing.Point(102, 297);
-            this.buttonDeletSelectedLexemeInState.Name = "buttonDeletSelectedLexemeInState";
-            this.buttonDeletSelectedLexemeInState.Size = new System.Drawing.Size(89, 44);
-            this.buttonDeletSelectedLexemeInState.TabIndex = 2;
-            this.buttonDeletSelectedLexemeInState.Text = "Удалить выбранную лексему";
-            this.buttonDeletSelectedLexemeInState.UseVisualStyleBackColor = true;
-            // 
-            // buttonStart
-            // 
-            this.buttonStart.Location = new System.Drawing.Point(503, 297);
-            this.buttonStart.Name = "buttonStart";
-            this.buttonStart.Size = new System.Drawing.Size(108, 44);
-            this.buttonStart.TabIndex = 5;
-            this.buttonStart.Text = "Готово к употреблению";
-            this.buttonStart.UseVisualStyleBackColor = true;
-            this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
-            // 
-            // labelStepThree
-            // 
-            this.labelStepThree.AutoSize = true;
-            this.labelStepThree.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelStepThree.Location = new System.Drawing.Point(10, 11);
-            this.labelStepThree.Name = "labelStepThree";
-            this.labelStepThree.Size = new System.Drawing.Size(794, 24);
-            this.labelStepThree.TabIndex = 5;
-            this.labelStepThree.Text = "Шаг 3. После заполнения \"Машины состояний\" нужно нажать \"Готово к употреблению\"";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -626,12 +639,12 @@
             this.groupBoxCreateLexem.PerformLayout();
             this.panelTableOfState.ResumeLayout(false);
             this.panelTableOfState.PerformLayout();
+            this.groupBoxControlPanel.ResumeLayout(false);
+            this.groupBoxControlPanel.PerformLayout();
             this.groupBoxLexemes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLexemes)).EndInit();
             this.groupBoxTableOfState.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTableOfState)).EndInit();
-            this.groupBoxControlPanel.ResumeLayout(false);
-            this.groupBoxControlPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -683,9 +696,9 @@
         private System.Windows.Forms.Label labelTextForLexicalAnalysis;
         private System.Windows.Forms.Label labelCurrentLexeme;
         private System.Windows.Forms.Label labelLastLexeme;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxForLex;
+        private System.Windows.Forms.TextBox textBoxCurrentLexeme;
+        private System.Windows.Forms.TextBox textBoxLastLexeme;
         private System.Windows.Forms.Button buttonToStart;
         private System.Windows.Forms.Button buttonDeletSelectedLexemeInState;
         private System.Windows.Forms.Button buttonAddLexemeInState;
@@ -693,6 +706,8 @@
         private System.Windows.Forms.Button buttonAddClassOfSymbolsInState;
         private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.Label labelStepThree;
+        private System.Windows.Forms.Button buttonChangeMachineOfState;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }
 
