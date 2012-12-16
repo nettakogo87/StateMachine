@@ -11,9 +11,15 @@ namespace StateMachine
 {
     public class ClassOfSymbol
     {
+        public const char STOP_SYMBOL = '#';
+
         private string _interval;
 
         public string Name { get; set; }
+        public string Interval
+        {
+            get { return this._interval; }
+        }
 
         public ClassOfSymbol(string name, string interval)
         {
