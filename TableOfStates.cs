@@ -42,7 +42,7 @@ namespace StateMachine
             this._buffer += symbol;
         }
         
-        public string ReturnLastLexem()
+        public string ReturnLastLexeme()
         {
             this._newState = 0;
             string lastLexem = this._buffer;
@@ -60,10 +60,10 @@ namespace StateMachine
             {
                 if (this._massOfClassOfSymbol[i].ContainsSymbol(symbol))
                 {
-                    return i;
+                    return i + 1;
                 }
             }
-            return this._massOfClassOfSymbol.Length + 1; // "Остальные" символы будут в последнем столбце
+            return 0; // "Остальные" символы будут в последнем столбце
         }
     }
 }
