@@ -118,23 +118,34 @@ namespace StateMachine
 
         private void buttonToTableOfState_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < this._listClassOfSymbol.Count; i++ )
-            {
-                dataGridViewTableOfState.Columns.Add(this._listClassOfSymbol[i].Name, this._listClassOfSymbol[i].Name);
-                dataGridViewTableOfState.Columns[i + 1].SortMode = DataGridViewColumnSortMode.NotSortable;
-            }
+            CreateColumnViewTableOfStatel();
             dataGridViewTableOfState.Rows.Add();
             dataGridViewTableOfState.Rows[0].HeaderCell.Value = "S0";
-
-            for (int i = 0; i < this._listOfLexemes.Count; i++)
-            {
-                dataGridViewLexemes.Rows.Add(this._listOfLexemes[i].Name, this._listOfLexemes[i].CountCharToReturn, this._listOfLexemes[i].FinalState);
-                dataGridViewLexemes.Rows[i].HeaderCell.Value = i.ToString();
-            }
+            FillViewLexemes();
 
             panelClassOfSymbol.Visible = false;
             panelLexem.Visible = false;
             panelTableOfState.Visible = true;
+        }
+
+        private void FillViewLexemes()
+        {
+            for (int i = 0; i < this._listOfLexemes.Count; i++)
+            {
+                dataGridViewLexemes.Rows.Add(this._listOfLexemes[i].Name, this._listOfLexemes[i].CountCharToReturn,
+                                             this._listOfLexemes[i].FinalState);
+                dataGridViewLexemes.Rows[i].HeaderCell.Value = i.ToString();
+            }
+        }
+
+        /* нужен для создания столбцов в таблице машины состояний */
+        private void CreateColumnViewTableOfStatel() 
+        {
+            for (int i = 0; i < this._listClassOfSymbol.Count; i++)
+            {
+                dataGridViewTableOfState.Columns.Add(this._listClassOfSymbol[i].Name, this._listClassOfSymbol[i].Name);
+                dataGridViewTableOfState.Columns[i + 1].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
 
         private void buttonAddState_Click(object sender, EventArgs e)
@@ -232,12 +243,20 @@ namespace StateMachine
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 StreamWriter sw = new StreamWriter(saveFileDialog.FileName);
-                sw.WriteLine("Class of symbols");
+                sw.WriteLine("Class of symbols: " + this._listClassOfSymbol.Count.ToString());
                 foreach (ClassOfSymbol classOfSymbol in this._listClassOfSymbol)
                 {
                     sw.WriteLine(classOfSymbol.Name + " " + classOfSymbol.Interval);
                 }
-                sw.WriteLine("State Machine");
+                sw.WriteLine("Lexemes: " + dataGridViewLexemes.Rows.Count.ToString());
+                for (int i = 0; i < dataGridViewLexemes.Rows.Count; i++)
+                {
+                    string name = Convert.ToString(dataGridViewLexemes[0, i].Value);
+                    string countCharToReturn = Convert.ToString(dataGridViewLexemes[1, i].Value);
+                    string finalState = Convert.ToString(dataGridViewLexemes[2, i].Value);
+                    sw.WriteLine(name + " " + countCharToReturn + " " + finalState);
+                }
+                sw.WriteLine("Count states of Machine: " + dataGridViewTableOfState.Rows.Count.ToString());
                 for (int i = 0; i < dataGridViewTableOfState.Rows.Count; i++)
                 {
                     for (int j = 0; j < dataGridViewTableOfState.Columns.Count; j++)
@@ -246,15 +265,61 @@ namespace StateMachine
                     }
                     sw.Write(sw.NewLine);
                 }
-                sw.WriteLine("Lexemes");
-                for (int i = 0; i < dataGridViewLexemes.Rows.Count; i++)
-                {
-                    string name = Convert.ToString(dataGridViewLexemes[0, i].Value);
-                    string countCharToReturn = Convert.ToString(dataGridViewLexemes[1, i].Value);
-                    string finalState = Convert.ToString(dataGridViewLexemes[2, i].Value);
-                    sw.WriteLine(name + " " + countCharToReturn + " " + finalState);
-                }
                 sw.Close();
+            }
+        }
+
+        private void LoadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFileDialog.InitialDirectory = Directory.GetCurrentDirectory();
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                this._listClassOfSymbol.Clear();
+                this._listOfLexemes.Clear();
+
+                for (int i = dataGridViewTableOfState.Columns.Count; i > 1; i--)
+                {
+                    dataGridViewTableOfState.Columns.Clear();
+                }
+                dataGridViewLexemes.Rows.Clear();
+ 
+                StreamReader sr = new StreamReader(openFileDialog.FileName);
+                int countClassOfSymbols = Convert.ToInt32(sr.ReadLine().Split(new char[] { ':' })[1]);
+                for (int i = 0; i < countClassOfSymbols; i++ )
+                {
+                    string[] blankClassOfSymbol = sr.ReadLine().Trim().Split(new char[] { ' ' });
+                    ClassOfSymbol newClassOfSymbol = new ClassOfSymbol(blankClassOfSymbol[0], blankClassOfSymbol[1]);
+                    this._listClassOfSymbol.Add(newClassOfSymbol);
+                }
+                int countLexemes = Convert.ToInt32(sr.ReadLine().Split(new char[] { ':' })[1]);
+                for (int i = 0; i < countLexemes; i++)
+                {
+                    string[] blankLexeme = sr.ReadLine().Trim().Split(new char[] { ' ' });
+                    string name = blankLexeme[0];
+                    int countCharToReturn = Convert.ToInt32(blankLexeme[1]);
+                    int finalState = Convert.ToInt32(blankLexeme[2]);
+                    Lexeme newLexeme = new Lexeme(name, countCharToReturn, finalState);
+                    this._listOfLexemes.Add(newLexeme);
+                }
+                FillViewLexemes();
+
+                CreateColumnViewTableOfStatel();
+                int countStatesOfMachine = Convert.ToInt32(sr.ReadLine().Split(new char[] { ':' })[1]);
+                for (int i = 0; i < countStatesOfMachine; i++)
+                {
+                    dataGridViewTableOfState.Rows.Add();
+                    dataGridViewTableOfState.Rows[i].HeaderCell.Value = "S" + i.ToString();
+                    string[] massRow = sr.ReadLine().Trim().Split(new char[] { ' ' });
+                    for (int j = 0; j < massRow.Length; j++)
+                    {
+                        dataGridViewTableOfState[j, i].Value = Convert.ToInt32(massRow[j]);
+                    }
+                }
+
+                sr.Close();
+                panelClassOfSymbol.Visible = false;
+                panelLexem.Visible = false;
+                panelTableOfState.Visible = true;
             }
         }
     }

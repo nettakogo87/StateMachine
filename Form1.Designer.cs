@@ -84,6 +84,7 @@
             this.buttonAddState = new System.Windows.Forms.Button();
             this.buttonDeleteState = new System.Windows.Forms.Button();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.groupBoxCreateClassOfSymbol.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panelClassOfSymbol.SuspendLayout();
@@ -155,6 +156,7 @@
             this.LoadToolStripMenuItem.Name = "LoadToolStripMenuItem";
             this.LoadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.LoadToolStripMenuItem.Text = "Загрузить";
+            this.LoadToolStripMenuItem.Click += new System.EventHandler(this.LoadToolStripMenuItem_Click);
             // 
             // ExitToolStripMenuItem
             // 
@@ -616,6 +618,10 @@
             this.buttonDeleteState.UseVisualStyleBackColor = true;
             this.buttonDeleteState.Click += new System.EventHandler(this.buttonDeleteState_Click);
             // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -708,6 +714,7 @@
         private System.Windows.Forms.Label labelStepThree;
         private System.Windows.Forms.Button buttonChangeMachineOfState;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }
 
