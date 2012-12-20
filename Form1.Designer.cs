@@ -76,15 +76,13 @@
             this.CountCharToReturn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FinalState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxTableOfState = new System.Windows.Forms.GroupBox();
-            this.buttonStart = new System.Windows.Forms.Button();
-            this.buttonDeletSelectedClassOfSymbolInState = new System.Windows.Forms.Button();
-            this.buttonAddClassOfSymbolsInState = new System.Windows.Forms.Button();
             this.dataGridViewTableOfState = new System.Windows.Forms.DataGridView();
             this.Other = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonAddState = new System.Windows.Forms.Button();
             this.buttonDeleteState = new System.Windows.Forms.Button();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.buttonStart = new System.Windows.Forms.Button();
             this.groupBoxCreateClassOfSymbol.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panelClassOfSymbol.SuspendLayout();
@@ -141,27 +139,27 @@
             // CreateToolStripMenuItem
             // 
             this.CreateToolStripMenuItem.Name = "CreateToolStripMenuItem";
-            this.CreateToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.CreateToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.CreateToolStripMenuItem.Text = "Создать";
             // 
             // SaveToolStripMenuItem
             // 
             this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
-            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.SaveToolStripMenuItem.Text = "Сохранить";
             this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // LoadToolStripMenuItem
             // 
             this.LoadToolStripMenuItem.Name = "LoadToolStripMenuItem";
-            this.LoadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.LoadToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.LoadToolStripMenuItem.Text = "Загрузить";
             this.LoadToolStripMenuItem.Click += new System.EventHandler(this.LoadToolStripMenuItem_Click);
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.ExitToolStripMenuItem.Text = "Выход";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -397,6 +395,7 @@
             this.buttonChangeMachineOfState.TabIndex = 9;
             this.buttonChangeMachineOfState.Text = "Редактировать машину состояний";
             this.buttonChangeMachineOfState.UseVisualStyleBackColor = true;
+            this.buttonChangeMachineOfState.Click += new System.EventHandler(this.buttonChangeMachineOfState_Click);
             // 
             // buttonToStart
             // 
@@ -406,6 +405,7 @@
             this.buttonToStart.TabIndex = 8;
             this.buttonToStart.Text = "В исодное состояние";
             this.buttonToStart.UseVisualStyleBackColor = true;
+            this.buttonToStart.Click += new System.EventHandler(this.buttonToStart_Click);
             // 
             // buttonClearSteps
             // 
@@ -415,6 +415,7 @@
             this.buttonClearSteps.TabIndex = 7;
             this.buttonClearSteps.Text = "Сброс";
             this.buttonClearSteps.UseVisualStyleBackColor = true;
+            this.buttonClearSteps.Click += new System.EventHandler(this.buttonClearSteps_Click);
             // 
             // buttonStep
             // 
@@ -539,8 +540,6 @@
             // groupBoxTableOfState
             // 
             this.groupBoxTableOfState.Controls.Add(this.buttonStart);
-            this.groupBoxTableOfState.Controls.Add(this.buttonDeletSelectedClassOfSymbolInState);
-            this.groupBoxTableOfState.Controls.Add(this.buttonAddClassOfSymbolsInState);
             this.groupBoxTableOfState.Controls.Add(this.dataGridViewTableOfState);
             this.groupBoxTableOfState.Controls.Add(this.buttonAddState);
             this.groupBoxTableOfState.Controls.Add(this.buttonDeleteState);
@@ -550,34 +549,6 @@
             this.groupBoxTableOfState.TabIndex = 3;
             this.groupBoxTableOfState.TabStop = false;
             this.groupBoxTableOfState.Text = "Машина состояний";
-            // 
-            // buttonStart
-            // 
-            this.buttonStart.Location = new System.Drawing.Point(503, 297);
-            this.buttonStart.Name = "buttonStart";
-            this.buttonStart.Size = new System.Drawing.Size(108, 44);
-            this.buttonStart.TabIndex = 5;
-            this.buttonStart.Text = "Готово к употреблению";
-            this.buttonStart.UseVisualStyleBackColor = true;
-            this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
-            // 
-            // buttonDeletSelectedClassOfSymbolInState
-            // 
-            this.buttonDeletSelectedClassOfSymbolInState.Location = new System.Drawing.Point(369, 297);
-            this.buttonDeletSelectedClassOfSymbolInState.Name = "buttonDeletSelectedClassOfSymbolInState";
-            this.buttonDeletSelectedClassOfSymbolInState.Size = new System.Drawing.Size(127, 44);
-            this.buttonDeletSelectedClassOfSymbolInState.TabIndex = 4;
-            this.buttonDeletSelectedClassOfSymbolInState.Text = "Удалить выбранный класс символов";
-            this.buttonDeletSelectedClassOfSymbolInState.UseVisualStyleBackColor = true;
-            // 
-            // buttonAddClassOfSymbolsInState
-            // 
-            this.buttonAddClassOfSymbolsInState.Location = new System.Drawing.Point(245, 297);
-            this.buttonAddClassOfSymbolsInState.Name = "buttonAddClassOfSymbolsInState";
-            this.buttonAddClassOfSymbolsInState.Size = new System.Drawing.Size(118, 44);
-            this.buttonAddClassOfSymbolsInState.TabIndex = 3;
-            this.buttonAddClassOfSymbolsInState.Text = "Добавить класс символов";
-            this.buttonAddClassOfSymbolsInState.UseVisualStyleBackColor = true;
             // 
             // dataGridViewTableOfState
             // 
@@ -621,6 +592,16 @@
             // openFileDialog
             // 
             this.openFileDialog.FileName = "openFileDialog1";
+            // 
+            // buttonStart
+            // 
+            this.buttonStart.Location = new System.Drawing.Point(503, 297);
+            this.buttonStart.Name = "buttonStart";
+            this.buttonStart.Size = new System.Drawing.Size(108, 44);
+            this.buttonStart.TabIndex = 5;
+            this.buttonStart.Text = "Готово к употреблению";
+            this.buttonStart.UseVisualStyleBackColor = true;
+            this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
             // 
             // Form1
             // 
@@ -708,13 +689,11 @@
         private System.Windows.Forms.Button buttonToStart;
         private System.Windows.Forms.Button buttonDeletSelectedLexemeInState;
         private System.Windows.Forms.Button buttonAddLexemeInState;
-        private System.Windows.Forms.Button buttonDeletSelectedClassOfSymbolInState;
-        private System.Windows.Forms.Button buttonAddClassOfSymbolsInState;
-        private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.Label labelStepThree;
         private System.Windows.Forms.Button buttonChangeMachineOfState;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.Button buttonStart;
     }
 }
 

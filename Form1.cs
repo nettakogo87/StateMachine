@@ -15,6 +15,7 @@ namespace StateMachine
         private List<ClassOfSymbol> _listClassOfSymbol;
         private List<Lexeme> _listOfLexemes;
         private TableOfStates _myMachine;
+        private string _originalString = "";
 
         public Form1()
         {
@@ -171,35 +172,94 @@ namespace StateMachine
 
         private void buttonStep_Click(object sender, EventArgs e)
         {
-            char[] charsForLex = textBoxForLex.Text.ToCharArray();
-            char currenSymbol = charsForLex[0];
-            this._myMachine.CreateNewState(currenSymbol.ToString());
-            textBoxCurrentLexeme.Text = this._myMachine.Buffer;
+            if ("" == this._originalString) /* для возврата к введенной строке в случае чего */
+            {
+                this._originalString = textBoxForLex.Text;
+            }
+
             if (this._myMachine.CheckStop())
             {
+                string lastSymbolForReturn = this._myMachine.ReturnLastSymbol();
+                textBoxForLex.Text = lastSymbolForReturn + textBoxForLex.Text;
                 textBoxLastLexeme.Text = this._myMachine.ReturnLastLexeme();
-            }
-            if ((ClassOfSymbol.STOP_SYMBOL == currenSymbol) && (1 == charsForLex.Count()))
-            {
-                textBoxForLex.Text = "";
-                buttonStep.Enabled = false;
+
+                for (int i = 0; i < dataGridViewLexemes.Rows.Count; i++)
+                {
+                    if (dataGridViewLexemes[0, i].Value.ToString() == textBoxLastLexeme.Text && this._myMachine.NewState == Convert.ToInt32(dataGridViewLexemes[2, i].Value))
+                    {
+                        dataGridViewLexemes[0, i].Style.BackColor = Color.Teal;
+                    }
+                }
+
+                textBoxCurrentLexeme.Clear();
+
+                this._myMachine.Clear();
+                ClearViewTableOfState();
             }
             else
             {
-                string lastTextForLex = "";
-                if (1 < charsForLex.Count())
+                ClearViewLexemes();
+
+                string stringForLexicalAnalyzer = textBoxForLex.Text;
+                string currenSymbol =" ";
+                if (ClassOfSymbol.STOP_SYMBOL == textBoxForLex.Text)
                 {
-                    for (int i = 1; i < charsForLex.Count(); i++)
-                    {
-                        lastTextForLex += charsForLex[i].ToString();
-                    }
+                    textBoxForLex.Clear();
+                    textBoxCurrentLexeme.Clear();
+
+                    ChangeViewTableOfState(currenSymbol);
+
+                    buttonStep.Enabled = false;
+                }
+                if (0 < stringForLexicalAnalyzer.Length)
+                {
+                    currenSymbol = stringForLexicalAnalyzer.First().ToString();
+                    stringForLexicalAnalyzer = stringForLexicalAnalyzer.Remove(0, 1);
+                    textBoxForLex.Text = stringForLexicalAnalyzer;
+
+                    ChangeViewTableOfState(currenSymbol);
+
+                    textBoxCurrentLexeme.Text = this._myMachine.Buffer;
                 }
                 else
                 {
-                    lastTextForLex = ClassOfSymbol.STOP_SYMBOL.ToString();
+                    textBoxForLex.Text = ClassOfSymbol.STOP_SYMBOL;
+                    textBoxCurrentLexeme.Clear();
+
+                    ChangeViewTableOfState(currenSymbol);
                 }
-                textBoxForLex.Text = lastTextForLex;
+                
             }
+        }
+
+        private void ClearViewLexemes()
+        {
+            for (int i = 0; i < dataGridViewLexemes.Rows.Count; i++)
+            {
+                dataGridViewLexemes[0, i].Style.BackColor = Color.White;
+            }
+        }
+
+        private void ClearViewTableOfState()
+        {
+            for (int i = 0; i < dataGridViewTableOfState.Rows.Count; i++)
+            {
+                for (int j = 0; j < dataGridViewTableOfState.Columns.Count; j++)
+                {
+                    dataGridViewTableOfState[j, i].Style.BackColor = System.Drawing.Color.White;
+                }
+            }
+        }
+
+        private void ChangeViewTableOfState(string currenSymbol)
+        {
+            dataGridViewTableOfState[_myMachine.CurrentClassOfSymbol, _myMachine.CurrentState].Style.BackColor =
+                Color.White;
+
+            this._myMachine.CreateNewState(currenSymbol);
+
+            dataGridViewTableOfState[_myMachine.CurrentClassOfSymbol, _myMachine.CurrentState].Style.BackColor =
+                Color.Red;
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
@@ -330,6 +390,48 @@ namespace StateMachine
                                              MessageBoxIcon.Question);
                 }
             }
+        }
+
+        private void buttonToStart_Click(object sender, EventArgs e)
+        {
+            this._myMachine.Clear();
+            ClearViewTableOfState();
+            textBoxForLex.Text = this._originalString;
+            textBoxLastLexeme.Text = "";
+            textBoxCurrentLexeme.Text = "";
+            buttonStep.Enabled = true;
+        }
+
+        private void buttonClearSteps_Click(object sender, EventArgs e)
+        {
+            this._myMachine.Clear();
+            ClearViewTableOfState();
+            this._originalString = "";
+            textBoxForLex.Text = "";
+            textBoxLastLexeme.Text = "";
+            textBoxCurrentLexeme.Text = "";
+            buttonStep.Enabled = true;
+        }
+
+        private void buttonChangeMachineOfState_Click(object sender, EventArgs e)
+        {
+            this._myMachine.Clear();
+            this._originalString = "";
+            textBoxForLex.Text = "";
+            textBoxLastLexeme.Text = "";
+            textBoxCurrentLexeme.Text = "";
+
+            buttonAddState.Enabled = true;
+            buttonDeleteState.Enabled = true;
+            buttonStart.Enabled = true;
+            buttonAddLexemeInState.Enabled = true;
+            buttonDeletSelectedLexemeInState.Enabled = true;
+
+            buttonStep.Enabled = false;
+
+            dataGridViewLexemes.ReadOnly = false;
+            dataGridViewTableOfState.ReadOnly = false;
+            groupBoxControlPanel.Enabled = false;
         }
     }
 }

@@ -17,9 +17,25 @@ namespace StateMachine
         private int _newState;                        // новое состояние
         private string _buffer;                       // буфер для накапливания литер лексемы
 
+        public int CurrentClassOfSymbol
+        {
+            get { return this._currentClassOfSymbol; }
+        }
+        public int CurrentState
+        {
+            get { return this._currentState; }
+        }
+        public int NewState
+        {
+            get { return this._newState; }
+        }
         public string Buffer
         {
             get { return this._buffer; }
+        }
+        public string ReturnLastSymbol()
+        {
+            return this._buffer[this._buffer.Count() - 1].ToString();
         }
 
         public TableOfStates(int[,] states, ClassOfSymbol[] massOfClassOfSymbol)
@@ -33,25 +49,30 @@ namespace StateMachine
             this._newState = 0;
             this._buffer = "";
         }
+        public void Clear()
+        {
+            this._currentState = 0;
+            this._currentClassOfSymbol = 0;
+            this._newState = 0;
+            this._buffer = "";
+        }
 
         public void CreateNewState(string symbol)
         {
-            int indexOfClassSymbol = DefineIndexOfClassSymbol(symbol);
+            this._currentClassOfSymbol = DefineIndexOfClassSymbol(symbol);
             this._currentState = this._newState;
-            this._newState = this._states[this._currentState, indexOfClassSymbol];
+            this._newState = this._states[this._currentClassOfSymbol, this._currentState];
             this._buffer += symbol;
+
         }
         
         public string ReturnLastLexeme()
         {
-            this._newState = 0;
-            string lastLexem = this._buffer;
-            this._buffer = "";
-            return lastLexem;
+            return this._buffer.Remove(this._buffer.Count() - 1);
         }
         public bool CheckStop()
         {
-            return this._currentState <= 0;
+            return this._newState < 0;
         }
 
         private int DefineIndexOfClassSymbol(string symbol)
