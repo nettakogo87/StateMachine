@@ -274,52 +274,61 @@ namespace StateMachine
             openFileDialog.InitialDirectory = Directory.GetCurrentDirectory();
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                this._listClassOfSymbol.Clear();
-                this._listOfLexemes.Clear();
-
-                for (int i = dataGridViewTableOfState.Columns.Count; i > 1; i--)
+                try
                 {
-                    dataGridViewTableOfState.Columns.Clear();
-                }
-                dataGridViewLexemes.Rows.Clear();
- 
-                StreamReader sr = new StreamReader(openFileDialog.FileName);
-                int countClassOfSymbols = Convert.ToInt32(sr.ReadLine().Split(new char[] { ':' })[1]);
-                for (int i = 0; i < countClassOfSymbols; i++ )
-                {
-                    string[] blankClassOfSymbol = sr.ReadLine().Trim().Split(new char[] { ' ' });
-                    ClassOfSymbol newClassOfSymbol = new ClassOfSymbol(blankClassOfSymbol[0], blankClassOfSymbol[1]);
-                    this._listClassOfSymbol.Add(newClassOfSymbol);
-                }
-                int countLexemes = Convert.ToInt32(sr.ReadLine().Split(new char[] { ':' })[1]);
-                for (int i = 0; i < countLexemes; i++)
-                {
-                    string[] blankLexeme = sr.ReadLine().Trim().Split(new char[] { ' ' });
-                    string name = blankLexeme[0];
-                    int countCharToReturn = Convert.ToInt32(blankLexeme[1]);
-                    int finalState = Convert.ToInt32(blankLexeme[2]);
-                    Lexeme newLexeme = new Lexeme(name, countCharToReturn, finalState);
-                    this._listOfLexemes.Add(newLexeme);
-                }
-                FillViewLexemes();
-
-                CreateColumnViewTableOfStatel();
-                int countStatesOfMachine = Convert.ToInt32(sr.ReadLine().Split(new char[] { ':' })[1]);
-                for (int i = 0; i < countStatesOfMachine; i++)
-                {
-                    dataGridViewTableOfState.Rows.Add();
-                    dataGridViewTableOfState.Rows[i].HeaderCell.Value = "S" + i.ToString();
-                    string[] massRow = sr.ReadLine().Trim().Split(new char[] { ' ' });
-                    for (int j = 0; j < massRow.Length; j++)
+                    this._listClassOfSymbol.Clear();
+                    this._listOfLexemes.Clear();
+                    for (int i = dataGridViewTableOfState.Columns.Count; i > 1; i--)
                     {
-                        dataGridViewTableOfState[j, i].Value = Convert.ToInt32(massRow[j]);
+                        dataGridViewTableOfState.Columns.Clear();
                     }
-                }
+                    dataGridViewLexemes.Rows.Clear();
 
-                sr.Close();
-                panelClassOfSymbol.Visible = false;
-                panelLexem.Visible = false;
-                panelTableOfState.Visible = true;
+                    StreamReader sr = new StreamReader(openFileDialog.FileName);
+                    int countClassOfSymbols = Convert.ToInt32(sr.ReadLine().Split(new char[] {':'})[1]);
+                    for (int i = 0; i < countClassOfSymbols; i++)
+                    {
+                        string[] blankClassOfSymbol = sr.ReadLine().Trim().Split(new char[] {' '});
+                        ClassOfSymbol newClassOfSymbol = new ClassOfSymbol(blankClassOfSymbol[0], blankClassOfSymbol[1]);
+                        this._listClassOfSymbol.Add(newClassOfSymbol);
+                    }
+                    int countLexemes = Convert.ToInt32(sr.ReadLine().Split(new char[] {':'})[1]);
+                    for (int i = 0; i < countLexemes; i++)
+                    {
+                        string[] blankLexeme = sr.ReadLine().Trim().Split(new char[] {' '});
+                        string name = blankLexeme[0];
+                        int countCharToReturn = Convert.ToInt32(blankLexeme[1]);
+                        int finalState = Convert.ToInt32(blankLexeme[2]);
+                        Lexeme newLexeme = new Lexeme(name, countCharToReturn, finalState);
+                        this._listOfLexemes.Add(newLexeme);
+                    }
+                    FillViewLexemes();
+
+                    CreateColumnViewTableOfStatel();
+                    int countStatesOfMachine = Convert.ToInt32(sr.ReadLine().Split(new char[] {':'})[1]);
+                    for (int i = 0; i < countStatesOfMachine; i++)
+                    {
+                        dataGridViewTableOfState.Rows.Add();
+                        dataGridViewTableOfState.Rows[i].HeaderCell.Value = "S" + i.ToString();
+                        string[] massRow = sr.ReadLine().Trim().Split(new char[] {' '});
+                        for (int j = 0; j < massRow.Length; j++)
+                        {
+                            dataGridViewTableOfState[j, i].Value = Convert.ToInt32(massRow[j]);
+                        }
+                    }
+                    sr.Close();
+
+                    panelClassOfSymbol.Visible = false;
+                    panelLexem.Visible = false;
+                    panelTableOfState.Visible = true;
+                }
+                catch (Exception ex)
+                {
+                    const string caption = "Ошибка в выражении!";
+                    var result = MessageBox.Show(ex.Message, caption,
+                                             MessageBoxButtons.OK,
+                                             MessageBoxIcon.Question);
+                }
             }
         }
     }
