@@ -11,7 +11,7 @@ namespace StateMachine
 {
     public class ClassOfSymbol
     {
-        public const char STOP_SYMBOL = '#';
+        public const string STOP_SYMBOL = "#";
 
         private string _interval;
 
