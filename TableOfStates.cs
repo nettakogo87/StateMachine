@@ -33,9 +33,10 @@ namespace StateMachine
         {
             get { return this._buffer; }
         }
-        public string ReturnLastSymbol()
+        public string ReturnLastSymbol(int count)
         {
-            return this._buffer[this._buffer.Count() - 1].ToString();
+            return this._buffer.Remove(0, this._buffer.Count() - count);
+            return this._buffer[this._buffer.Count() - count].ToString();
         }
 
         public TableOfStates(int[,] states, ClassOfSymbol[] massOfClassOfSymbol)
@@ -66,9 +67,9 @@ namespace StateMachine
 
         }
         
-        public string ReturnLastLexeme()
+        public string ReturnLastLexeme(int count)
         {
-            return this._buffer.Remove(this._buffer.Count() - 1);
+            return this._buffer.Remove(this._buffer.Count() - count);
         }
         public bool CheckStop()
         {

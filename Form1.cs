@@ -179,9 +179,19 @@ namespace StateMachine
 
             if (this._myMachine.CheckStop())
             {
-                string lastSymbolForReturn = this._myMachine.ReturnLastSymbol();
+                int countCharForReturn = 0;
+                for (int i = 0; i < dataGridViewLexemes.Rows.Count; i++)
+                {
+                    if (this._myMachine.NewState == Convert.ToInt32(dataGridViewLexemes[2, i].Value))
+                    {
+                        dataGridViewLexemes[0, i].Style.BackColor = Color.Red;
+                        countCharForReturn = Convert.ToInt32(dataGridViewLexemes[1, i].Value);
+                    }
+                }
+
+                string lastSymbolForReturn = this._myMachine.ReturnLastSymbol(countCharForReturn);
                 textBoxForLex.Text = lastSymbolForReturn + textBoxForLex.Text;
-                textBoxLastLexeme.Text = this._myMachine.ReturnLastLexeme();
+                textBoxLastLexeme.Text = this._myMachine.ReturnLastLexeme(countCharForReturn);
 
                 for (int i = 0; i < dataGridViewLexemes.Rows.Count; i++)
                 {
