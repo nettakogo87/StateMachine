@@ -76,13 +76,13 @@
             this.CountCharToReturn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FinalState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxTableOfState = new System.Windows.Forms.GroupBox();
+            this.buttonStart = new System.Windows.Forms.Button();
             this.dataGridViewTableOfState = new System.Windows.Forms.DataGridView();
             this.Other = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonAddState = new System.Windows.Forms.Button();
             this.buttonDeleteState = new System.Windows.Forms.Button();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.buttonStart = new System.Windows.Forms.Button();
             this.groupBoxCreateClassOfSymbol.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panelClassOfSymbol.SuspendLayout();
@@ -495,6 +495,7 @@
             this.buttonDeletSelectedLexemeInState.TabIndex = 2;
             this.buttonDeletSelectedLexemeInState.Text = "Удалить выбранную лексему";
             this.buttonDeletSelectedLexemeInState.UseVisualStyleBackColor = true;
+            this.buttonDeletSelectedLexemeInState.Click += new System.EventHandler(this.buttonDeletSelectedLexemeInState_Click);
             // 
             // buttonAddLexemeInState
             // 
@@ -504,6 +505,7 @@
             this.buttonAddLexemeInState.TabIndex = 1;
             this.buttonAddLexemeInState.Text = "Добавить лексему";
             this.buttonAddLexemeInState.UseVisualStyleBackColor = true;
+            this.buttonAddLexemeInState.Click += new System.EventHandler(this.buttonAddLexemeInState_Click);
             // 
             // dataGridViewLexemes
             // 
@@ -550,6 +552,16 @@
             this.groupBoxTableOfState.TabStop = false;
             this.groupBoxTableOfState.Text = "Машина состояний";
             // 
+            // buttonStart
+            // 
+            this.buttonStart.Location = new System.Drawing.Point(503, 297);
+            this.buttonStart.Name = "buttonStart";
+            this.buttonStart.Size = new System.Drawing.Size(108, 44);
+            this.buttonStart.TabIndex = 5;
+            this.buttonStart.Text = "Готово к употреблению";
+            this.buttonStart.UseVisualStyleBackColor = true;
+            this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
+            // 
             // dataGridViewTableOfState
             // 
             this.dataGridViewTableOfState.AllowUserToAddRows = false;
@@ -592,16 +604,6 @@
             // openFileDialog
             // 
             this.openFileDialog.FileName = "openFileDialog1";
-            // 
-            // buttonStart
-            // 
-            this.buttonStart.Location = new System.Drawing.Point(503, 297);
-            this.buttonStart.Name = "buttonStart";
-            this.buttonStart.Size = new System.Drawing.Size(108, 44);
-            this.buttonStart.TabIndex = 5;
-            this.buttonStart.Text = "Готово к употреблению";
-            this.buttonStart.UseVisualStyleBackColor = true;
-            this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
             // 
             // Form1
             // 

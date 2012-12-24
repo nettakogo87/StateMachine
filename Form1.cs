@@ -433,5 +433,21 @@ namespace StateMachine
             dataGridViewTableOfState.ReadOnly = false;
             groupBoxControlPanel.Enabled = false;
         }
+
+        private void buttonAddLexemeInState_Click(object sender, EventArgs e)
+        {
+            dataGridViewLexemes.Rows.Add();
+        }
+
+        private void buttonDeletSelectedLexemeInState_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dataGridViewLexemes.Rows.Count; i++)
+            {
+                if (dataGridViewLexemes.Rows[i].Selected)
+                {
+                    dataGridViewLexemes.Rows.RemoveAt(i);
+                }
+            }
+        }
     }
 }
