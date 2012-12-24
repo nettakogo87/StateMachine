@@ -69,7 +69,14 @@ namespace StateMachine
         
         public string ReturnLastLexeme(int count)
         {
-            return this._buffer.Remove(this._buffer.Count() - count);
+            if (0 == count)
+            {
+                return this._buffer;
+            }
+            else
+            {
+                return this._buffer.Remove(this._buffer.Count() - count);
+            }
         }
         public bool CheckStop()
         {
